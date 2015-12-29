@@ -150,17 +150,17 @@ describe("API", function(){
 
 
   describe("selectorIndex", function(){
-    it("should receive selectorIndex", function(){
-      var matches = CSSselect.selectAll("div,p", [dom]);
+    it("should match selectAll", function(){
+      var matches = CSSselect("div,p", [dom]);
       assert.equal(matches.length, 2);
       assert.equal(matches[0].selectorIndex, 0);
       assert.equal(matches[1].selectorIndex, 1);
     });
 
-    it("should not receive selectorIndex if no match", function(){
-      var matches = CSSselect.selectAll("div,bar", [dom]);
-      assert.equal(matches.length, 1);
-      assert.equal(matches[0].selectorIndex, 0);
+    it("should match selectOne", function(){
+      var matches = CSSselect.selectOne("p,div", [dom]);
+      assert.equal(matches.name, 'div');
+      assert.equal(matches.selectorIndex, 1);
     });
   });
 

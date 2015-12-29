@@ -128,6 +128,19 @@ _As defined by CSS 4 and / or jQuery._
 
 __*__: Not part of CSS3
 
+
+## Forks
+ 
+### Moos
+The Moos fork provides `selectorIndex` property in the matched element(s).
+```js
+      var matches = CSSselect.selectAll("p,div", [dom]);
+      assert.equal(matches.length, 2);
+      assert.equal(matches[0].selectorIndex, 1);
+      assert.equal(matches[1].selectorIndex, 0);
+```
+Assuming `dom` was `<div><p>foo</p><div>`, the first matched element matched the second selector `div`, and the second matched element matched the first selector `p`.  Note that matched elements are returned in source order.
+
 ---
 
 License: BSD-like
