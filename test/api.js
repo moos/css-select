@@ -147,4 +147,21 @@ describe("API", function(){
 			assert.deepEqual(CSSselect.selectAll("p", div, {context: div}), p);
 		});
 	});
+
+
+  describe("selectorIndex", function(){
+    it("should receive selectorIndex", function(){
+      var matches = CSSselect.selectAll("div,p", [dom]);
+      assert.equal(matches.length, 2);
+      assert.equal(matches[0].selectorIndex, 0);
+      assert.equal(matches[1].selectorIndex, 1);
+    });
+
+    it("should not receive selectorIndex if no match", function(){
+      var matches = CSSselect.selectAll("div,bar", [dom]);
+      assert.equal(matches.length, 1);
+      assert.equal(matches[0].selectorIndex, 0);
+    });
+  });
+
 });
